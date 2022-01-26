@@ -1,0 +1,123 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: black;
+}
+/* Header */
+
+header{
+    width: 100vw;
+    height: 92px;
+    background-color: #CF2B2B;
+    position: relative;
+    
+
+}
+nav{
+    color: #FFFFFF;
+    position: absolute;
+    bottom: 18px;
+    left: 21px;
+ 
+}
+.nav-name{
+    font-size: 44px;
+    font-weight: 400;
+    font-family: 'Righteous', cursive;
+}
+.nav-description{
+    font-size: 18px;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+}
+
+/* ---Main ---*/
+main{
+    width: 100vw;
+    height: 100vh;
+    background-color: #E5E5E5;
+}
+.caixa-pratos{
+    width: 100vw;
+    /* background-color: purple; */
+    /* margin-left: 19px; */
+
+}
+.caixa-pratos-titulo{
+    font-family: 'Righteous', cursive;
+    font-size: 26px;
+    font-weight: 400;
+    color: #333333;
+    margin-bottom: 17px;
+}
+
+.sessao-pratos{
+    width: 100vw;
+    display: flex;
+    
+    overflow-x: scroll;
+
+    /* background-color: green; */
+}
+
+.prato{
+    width: 172px;
+    height: 216px;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    border-radius: 9px;
+    margin-right: 16px;
+    box-shadow: 0px 0px 10px -4px rgba(0, 0, 0, 0.25);
+    
+}
+
+.prato img{
+    width: 144px;
+    height: 87px;
+    margin-left: 14px;
+    margin-right: 14px;
+    margin-top: 18px;
+    margin-bottom: 8px;
+}
+
+.prato-textos{
+    width: 147px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 14px;
+    margin-right: 14px;
+    margin-top: 8px;
+    margin-bottom: 13px;
+    /* background-color: yellow; */
+}
+
+.prato-titulo{
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    color: #333333;
+}
+
+.prato-descricao{
+    font-size: 15px;
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
+    color: #A6A6A6;
+
+}
+.prato-preco{
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
+
+}
