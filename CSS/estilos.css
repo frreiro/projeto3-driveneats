@@ -3,10 +3,13 @@
 }
 
 body{
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: black;
+    background-color: #E5E5E5;
+
+
 }
 /* Header */
 
@@ -14,7 +17,10 @@ header{
     width: 100vw;
     height: 92px;
     background-color: #CF2B2B;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
     
 
 }
@@ -39,46 +45,62 @@ nav{
 
 /* ---Main ---*/
 main{
-    width: 100vw;
-    height: 100vh;
-    background-color: #E5E5E5;
+    margin-top: 123px;
+    
+    
+
 }
 .caixa-pratos{
     width: 100vw;
-    /* background-color: purple; */
-    /* margin-left: 19px; */
+    background-color: purple;
 
 }
-.caixa-pratos-titulo{
+.caixa-bebidas{
+    margin-top: 27px;
+    width: 100vw;
+    background-color: green;
+
+}
+.caixa-sobremesa{
+    margin-top: 27px;
+    width: 100vw;
+    background-color: red;
+
+}
+
+.caixa-titulo{
     font-family: 'Righteous', cursive;
     font-size: 26px;
     font-weight: 400;
     color: #333333;
+    margin-left: 19px;
     margin-bottom: 17px;
+    position: relative;
+    overflow: hidden;
 }
 
-.sessao-pratos{
-    width: 100vw;
+.sessao-bloco{
     display: flex;
-    
+    margin-left: 19px;
     overflow-x: scroll;
-
-    /* background-color: green; */
+    background-color: yellow;
 }
 
-.prato{
+.bloco{
     width: 172px;
     height: 216px;
     display: flex;
     flex-direction: column;
     background-color: #FFFFFF;
     border-radius: 9px;
+    
+    /* margin-left: 19px; */
     margin-right: 16px;
     box-shadow: 0px 0px 10px -4px rgba(0, 0, 0, 0.25);
     
 }
 
-.prato img{
+.bloco img{
     width: 144px;
     height: 87px;
     margin-left: 14px;
@@ -87,7 +109,7 @@ main{
     margin-bottom: 8px;
 }
 
-.prato-textos{
+.bloco-textos{
     width: 147px;
     height: 100%;
     display: flex;
@@ -100,21 +122,21 @@ main{
     /* background-color: yellow; */
 }
 
-.prato-titulo{
+.bloco-titulo{
     font-size: 16px;
     font-weight: 700;
     font-family: 'Roboto', sans-serif;
     color: #333333;
 }
 
-.prato-descricao{
+.bloco-descricao{
     font-size: 15px;
     font-weight: 300;
     font-family: 'Roboto', sans-serif;
     color: #A6A6A6;
 
 }
-.prato-preco{
+.bloco-preco{
     font-size: 16px;
     font-weight: 400;
     font-family: 'Roboto', sans-serif;
