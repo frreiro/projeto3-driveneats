@@ -1,12 +1,19 @@
+// Variaveis de nome
 let pratoEscolhido = null;
 let bebidaEscolhida = null;
 let sobremesaEscolhida = null;
 
+// Variaveis de preço
+let precoPratoEscolhido = 0;
+let precoBebidaEscolhida = 0;
+let precoSobremesaEscolhida = 0;
+
+// Desabilita o botão inicialmente
 let botaoPedido = document.querySelector(".button-pedido");
 botaoPedido.disabled = true;
 
 
-function clicadoPrato(nomePrato) {
+function clicadoPrato(nomePrato, nomePratoExibido) {
     //Add um numero em frente ao "prato" para saber qual prato está sendo clicado
     for (let i = 1; i <= 3; i++) {
     
@@ -19,11 +26,16 @@ function clicadoPrato(nomePrato) {
             check.classList.toggle("escondido");
 
             if(prato.classList.contains("borda-verde") === true){
-                  pratoEscolhido = "prato"+i;
+                // Armazena o nome do prato escolhido
+                pratoEscolhido = nomePratoExibido;
+                console.log(pratoEscolhido);
 
+                //Armazena o preço do prato escolhido
+                precoPratoEscolhido = parseFloat(document.querySelector(".prato"+i+" .precoPrato").innerHTML.replace(",",".")).toFixed(2);
+                console.log(precoPratoEscolhido);
             }else{
                  pratoEscolhido = null;
-
+                
             }
 
             // Verifica qual prato não ta sendo clicado e remove a borda dele
@@ -44,7 +56,7 @@ function clicadoPrato(nomePrato) {
     mudarCorBotao();
 
 }
-function clicadoBebida(nomeBebida) {
+function clicadoBebida(nomeBebida, nomeBebidaExibido) {
 
     //Add um numero em frente ao "prato" para saber qual prato está sendo clicado
     for (let i = 1; i <= 3; i++) {
@@ -58,7 +70,13 @@ function clicadoBebida(nomeBebida) {
             check.classList.toggle("escondido");
             
             if(bebida.classList.contains("borda-verde") === true){
-                bebidaEscolhida = "bebida"+i;
+                // Armazena o nome do prato escolhido
+                bebidaEscolhida = nomeBebidaExibido;
+                console.log(bebidaEscolhida);
+                //Armazena o preço do prato escolhido
+                precoBebidaEscolhida = parseFloat(document.querySelector(".bebida"+i+" .precoBebida").innerHTML.replace(",",".")).toFixed(2);
+                console.log(precoBebidaEscolhida);
+
             }else{
                 bebidaEscolhida = null;
 
@@ -80,7 +98,7 @@ function clicadoBebida(nomeBebida) {
     }
     mudarCorBotao();
 }
-function clicadoSobremesa(nomeSobremesa) {
+function clicadoSobremesa(nomeSobremesa, nomeSobremesaExibido) {
 
     //Add um numero em frente ao "prato" para saber qual prato está sendo clicado
     for (let i = 1; i <= 3; i++) {
@@ -94,7 +112,12 @@ function clicadoSobremesa(nomeSobremesa) {
             check.classList.toggle("escondido");
             
             if(sobremesa.classList.contains("borda-verde") === true){
-                sobremesaEscolhida = "sobremesa"+i;
+                // Armazena o nome do prato escolhido
+                sobremesaEscolhida = nomeSobremesaExibido;
+                console.log(sobremesaEscolhida);
+                //Armazena o preço do prato escolhido
+                precoSobremesaEscolhida = parseFloat(document.querySelector(".sobremesa"+i+" .precoSobremesa").innerHTML.replace(",",".")).toFixed(2);
+                console.log(precoSobremesaEscolhida);
             }else{
                 sobremesaEscolhida = null;
             }
@@ -117,7 +140,7 @@ function clicadoSobremesa(nomeSobremesa) {
     mudarCorBotao();
 }
 
-
+// Verifica se os 3 tipos esão selecionados
 function estaSelecionado(pratoSelecionado, bebidaSelecionado, sobremesaSelecionado){
     let isChecked;
     if(pratoSelecionado !== null && bebidaSelecionado !== null && sobremesaSelecionado !== null){
@@ -127,8 +150,7 @@ function estaSelecionado(pratoSelecionado, bebidaSelecionado, sobremesaSeleciona
     }
     return isChecked;
 }
-
-
+// Muda a cor do botão
  function mudarCorBotao(){
 
     if (estaSelecionado(pratoEscolhido, bebidaEscolhida,sobremesaEscolhida ) == true){
@@ -157,60 +179,61 @@ function estaSelecionado(pratoSelecionado, bebidaSelecionado, sobremesaSeleciona
         
  }
 
-
-
+ let nomeComprador = null;
+ let enderecoComprador = null;
 function validarPedido(){
-    console.log("Clicado");
+    // Perguntar o nome e endereço do comprador - BÔNUS
+    let nome = prompt("Qual o seu nome?");
+    let endereco = prompt("Qual o seu endereço?")
 
-    let texto = "Olá, gostaria de fazer o pedido:\n - Prato: Frango Yin Yang \n - Bebida: Coquinha Gelada \n - Sobremesa: Pudim \n Total: R$ 27.70"
+    nomeComprador = nome;
+    enderecoComprador = endereco;
+
+    // Habilita a tela de confirmação - BÔNUS
+    let habilitarTela = document.querySelector(".caixa-confirmacao");
+    habilitarTela.classList.remove("escondido");
+    
+
+
+    //Muda o nome e o valor do prato na tela de confirmação
+    let mudarPrato = document.querySelector(".prato-pedido");
+    mudarPrato.innerHTML = pratoEscolhido;
+    let mudarPrecoPrato = document.querySelector(".prato-pedido-valor");
+    mudarPrecoPrato.innerHTML = precoPratoEscolhido.replace(".",",");
+
+    //Muda o nome e o valor da bebida na tela de confirmação
+    let mudarBebida = document.querySelector(".bebida-pedido");
+    mudarBebida.innerHTML = bebidaEscolhida;
+    let mudarPrecoBebida = document.querySelector(".bebida-pedido-valor");
+    mudarPrecoBebida.innerHTML = precoBebidaEscolhida.replace(".",",");
+
+    //Muda o nome e o valor da sobremesa na tela de confirmação
+    let mudarSobremesa = document.querySelector(".sobremesa-pedido");
+    mudarSobremesa.innerHTML = sobremesaEscolhida;
+    let mudarPrecoSobremesa = document.querySelector(".sobremesa-pedido-valor");
+    mudarPrecoSobremesa.innerHTML = precoSobremesaEscolhida.replace(".",",");
+
+    // Muda o valor do total
+    let mudarValorTotal = document.querySelector(".valor-total-pedido");
+    mudarValorTotal.innerHTML ="R$ "+calculoSomaPreco(precoPratoEscolhido,precoSobremesaEscolhida,precoBebidaEscolhida).replace(".",",");
+}
+
+function confirmarPedido(){
+
+    // Msg que sera enviada p/ whatsapp
+    let texto = "Olá, gostaria de fazer o pedido:\n - Prato: "+pratoEscolhido+" \n - Bebida: "+bebidaEscolhida+" \n - Sobremesa: "+sobremesaEscolhida+" \n Total: R$ "+calculoSomaPreco(precoPratoEscolhido,precoSobremesaEscolhida,precoBebidaEscolhida).replace(".",",") +"\n\n Nome: "+nomeComprador+"\n Endereço: "+enderecoComprador;
 
     texto= window.encodeURIComponent(texto);
-    console.log(texto);
-
-
     window.open("https://wa.me/5524998197200?text="+texto,'_blank')
 }
 
+function cancelarPedido(){
+    let desabilitarTela = document.querySelector(".caixa-confirmacao");
+    desabilitarTela.classList.add("escondido");
+}
 
-
-
-
-
-
-// function clicadoPrato(nomePrato) {
-
-//     const selecionado = document.querySelector(".caixa-pratos .borda-verde");
-//     // Verifica quem está selecionado e remove a borda verde
-//     if(selecionado !== null){
-//         selecionado.classList.remove("borda-verde");
-//     }   
-//     // Add a borda verde
-//     let prato = document.querySelector("."+nomePrato);
-//     prato.classList.toggle("borda-verde");
-    
-
-//     let checkSelecionado = document.querySelector('.caixa-pratos .icone-'+nomePrato);
-//     checkSelecionado.classList.remove("escondido");
-
-// }
-
-
-// function clicadoBebida(nomeBebida) {
-
-//     const selecionado = document.querySelector(".caixa-bebidas .borda-verde");
-//     if(selecionado !== null){
-//         selecionado.classList.remove("borda-verde");
-//     }   
-//     let prato = document.querySelector(nomeBebida);
-//     prato.classList.toggle("borda-verde");
-// }
-
-// function clicadoSobremesa(nomeSobremesa) {
-
-//     const selecionado = document.querySelector(".caixa-sobremesa .borda-verde");
-//     if(selecionado !== null){
-//         selecionado.classList.remove("borda-verde");
-//     }   
-//     let prato = document.querySelector(nomeSobremesa);
-//     prato.classList.toggle("borda-verde");
-// }
+function calculoSomaPreco(num1,num2,num3){
+    let soma =0;
+    soma = parseFloat(num1) + parseFloat(num2) + parseFloat(num3);
+    return soma.toFixed(2);
+}
