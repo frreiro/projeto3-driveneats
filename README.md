@@ -29,7 +29,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
   - CSS
   - Javascript
 
-## Deploy
+## 🎨 Deploy
 
 O deploy do projeto pode ser econtrado no seguinte link: 
   
