@@ -28,3 +28,11 @@ As seguintes ferramentas foram usadas na construção do projeto:
   - HTML
   - CSS
   - Javascript
+
+## Deploy
+
+O deploy do projeto pode ser econtrado no seguinte link: 
+  
+  <a href="https://frreiro.github.io/projeto3-driveneats/">
+  <img alt="deploy-site" src="https://img.shields.io/badge/Link%20Deploy%20-Site-%2304D361">
+</a>
